@@ -1,0 +1,9 @@
+resources:
+- serviceaccount.yaml
+- job.yaml
+
+configMapGenerator:
+  - name: configmap-test
+    namespace: test
+    envs:
+      - db.configmap
