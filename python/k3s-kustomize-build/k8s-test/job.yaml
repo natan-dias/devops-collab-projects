@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-job
+  namespace: test
+spec:
+  template:
+    spec:
+      containers:
+      - command:
+        - bash
+        - -c
+        - |
+          ls        
+        name: test-job
+        image: ubuntu
+      restartPolicy: Never
