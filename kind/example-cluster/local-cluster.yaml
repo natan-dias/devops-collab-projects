@@ -3,7 +3,10 @@ apiVersion: kind.x-k8s.io/v1alpha4
 name: local-kind-cluster
 networking:
   podSubnet: 10.0.0.0/16
-  serviceSubnet: 10.0.0.0/16
+  serviceSubnet: 10.10.0.0/16
+  ipFamily: ipv4
+  apiServerAddress: 127.0.0.1
+
 # Releases https://github.com/kubernetes-sigs/kind/releases/tag/v0.20.0
 nodes:
 - role: control-plane
@@ -11,24 +14,24 @@ nodes:
 
 - role: worker
   image: kindest/node:v1.24.15@sha256:7db4f8bea3e14b82d12e044e25e34bd53754b7f2b0e9d56df21774e6f66a70ab
-labels:
-  group: dev
-extraMounts:
-- hostPath: /Users/natandias/workspace/kind
-  containerPath: /data
-extraPortMapping:
-- containerPort: 8090
-  hostPort: 8090
-  protocol: TCP
+  labels:
+    group: dev
+  extraMounts:
+  - hostPath: /Users/natandias/workspace/kind
+    containerPath: /data
+  extraPortMappings:
+  - containerPort: 8090
+    hostPort: 8090
+    protocol: TCP
 
 - role: worker
   image: kindest/node:v1.24.15@sha256:7db4f8bea3e14b82d12e044e25e34bd53754b7f2b0e9d56df21774e6f66a70ab
-labels:
-  group: spot
-extraMounts:
-- hostPath: /Users/natandias/workspace/kind
-  containerPath: /data
-extraPortMapping:
-- containerPort: 8091
-  hostPort: 8091
-  protocol: TCP
+  labels:
+    group: spot
+  extraMounts:
+  - hostPath: /Users/natandias/workspace/kind
+    containerPath: /data
+  extraPortMappings:
+  - containerPort: 8091
+    hostPort: 8091
+    protocol: TCP
