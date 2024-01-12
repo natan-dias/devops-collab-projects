@@ -20,7 +20,7 @@ Please, visit each folder to get more information about them. All folders must h
 
 | Name | Description | Link  |
 |---|---|---|
-| Kustomize-Validate | A simple way to check folders and to validate your kustomization setup. | [GitHub-link](https://github.com/natan-dias/devops-collab-projects/tree/main/kustomize-validate) |
+|  |  |  |
 
 ### Python Scripts
 
